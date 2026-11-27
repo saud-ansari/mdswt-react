@@ -1,32 +1,77 @@
-import Header from "./components/Header";
+import StudentCard from './components/StudentCard';
 
-import Navbar from "./components/Navbar";
-
-import CourseSection from "./components/CourseSection";
-
-import Footer from "./components/Footer";
-import "./App.css";
+import './App.css';
 
 function App() {
-  return (
-    <>
-      <Header />
 
-      <Navbar />
+    return (
 
-      <main>
-        <section className="welcome">
-          <h2>Welcome to Our Institute</h2>
+        <div className="container">
 
-          <p>Learn programming and build your professional career.</p>
-        </section>
+            <h1>Student Profile Directory</h1>
 
-        <CourseSection />
-      </main>
+            <div className="student-container">
 
-      <Footer />
-    </>
-  );
+                <StudentCard
+
+                    name="Rahul Sharma"
+
+                    email="rahul@gmail.com"
+
+                    age={21}
+
+                    course="ReactJS"
+
+                    marks={85}
+
+                    college="Vivek College"
+
+                    image="https://placehold.co/200x200?text=Rahul"
+
+                />
+
+                <StudentCard
+
+                    name="Priya Patil"
+
+                    email="priya@gmail.com"
+
+                    age={22}
+
+                    course="Python"
+
+                    marks={92}
+
+                    college="Mumbai University"
+
+                    image="https://placehold.co/200x200?text=Priya"
+
+                />
+
+                <StudentCard
+
+                    name="Amit Shah"
+
+                    email="amit@gmail.com"
+
+                    age={20}
+
+                    course="PHP"
+
+                    marks={28}
+
+                    college="City College"
+
+                    image="https://placehold.co/200x200?text=Amit"
+
+                />
+
+            </div>
+
+        </div>
+
+    );
+
 }
 
 export default App;
