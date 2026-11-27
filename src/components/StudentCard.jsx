@@ -1,47 +1,14 @@
-function StudentCard({
-
-    name,
-    email,
-    course,
-    age,
-    marks,
-    image,
-    college = "College Not Assigned"
-
-}) {
-
-    const result = marks >= 35 ? "Passed" : "Failed";
+function StudentCard({ student }) {
 
     return (
+        <div>
+            <h3>{student.name}</h3>
 
-        <div className="student-card">
+            <p>Course: {student.course}</p>
 
-            <img
-                src={image}
-                alt={name}
-                className="student-image"
-            />
-
-            <h2>{name}</h2>
-
-            <p>Email: {email}</p>
-
-            <p>Age: {age}</p>
-
-            <p>Course: {course}</p>
-
-            <p>Marks: {marks}</p>
-
-            <p>College: {college}</p>
-
-            <h3>
-                Result: {result}
-            </h3>
-
+            <p>Marks: {student.marks}</p>
         </div>
-
     );
-
 }
 
 export default StudentCard;

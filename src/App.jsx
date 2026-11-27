@@ -1,77 +1,36 @@
-import StudentCard from './components/StudentCard';
-
-import './App.css';
+import StudentCard from "./components/StudentCard";
 
 function App() {
+  const students = [
+    {
+      id: 1,
+      name: "Rahul",
+      course: "ReactJS",
+      marks: 85,
+    },
+    {
+      id: 2,
+      name: "Priya",
+      course: "PHP",
+      marks: 91,
+    },
+    {
+      id: 3,
+      name: "Amit",
+      course: "Python",
+      marks: 76,
+    },
+  ];
 
-    return (
+  return (
+    <div>
+      <h2>Student Directory</h2>
 
-        <div className="container">
-
-            <h1>Student Profile Directory</h1>
-
-            <div className="student-container">
-
-                <StudentCard
-
-                    name="Rahul Sharma"
-
-                    email="rahul@gmail.com"
-
-                    age={21}
-
-                    course="ReactJS"
-
-                    marks={85}
-
-                    college="Vivek College"
-
-                    image="https://placehold.co/200x200?text=Rahul"
-
-                />
-
-                <StudentCard
-
-                    name="Priya Patil"
-
-                    email="priya@gmail.com"
-
-                    age={22}
-
-                    course="Python"
-
-                    marks={92}
-
-                    college="Mumbai University"
-
-                    image="https://placehold.co/200x200?text=Priya"
-
-                />
-
-                <StudentCard
-
-                    name="Amit Shah"
-
-                    email="amit@gmail.com"
-
-                    age={20}
-
-                    course="PHP"
-
-                    marks={28}
-
-                    college="City College"
-
-                    image="https://placehold.co/200x200?text=Amit"
-
-                />
-
-            </div>
-
-        </div>
-
-    );
-
+      {students.map((student) => (
+        <StudentCard key={student.id} student={student} />
+      ))}
+    </div>
+  );
 }
 
 export default App;
