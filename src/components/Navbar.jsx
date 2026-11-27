@@ -1,21 +1,34 @@
 function Navbar() {
 
     return (
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
 
-        <nav className="navbar">
+            <div className="container">
 
-            <a href="/">Home</a>
+                <a className="navbar-brand" href="/">
+                    EduConnect
+                </a>
 
-            <a href="/courses">Courses</a>
+                <div className="navbar-nav ms-auto">
 
-            <a href="/about">About</a>
+                    <a className="nav-link active" href="/">
+                        Dashboard
+                    </a>
 
-            <a href="/contact">Contact</a>
+                    <a className="nav-link" href="/courses">
+                        Courses
+                    </a>
+
+                    <a className="nav-link" href="/profile">
+                        Profile
+                    </a>
+
+                </div>
+
+            </div>
 
         </nav>
-
     );
-
 }
 
 export default Navbar;
