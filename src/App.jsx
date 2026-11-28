@@ -1,88 +1,68 @@
-import Navbar from "./components/Navbar";
-import StatCard from "./components/StatCard";
-import CourseCard from "./components/CourseCard";
+import { useState } from "react";
+
+import StudentForm from "./components/StudentForm";
+import StudentList from "./components/StudentList";
+import "./App.css";
 
 function App() {
+  const [students, setStudents] = useState([
+    {
+      id: 1,
+      name: "Rahul",
+      email: "rahul@gmail.com",
+      course: "ReactJS",
+      marks: 85,
+    },
+    {
+      id: 2,
+      name: "Priya",
+      email: "priya@gmail.com",
+      course: "PHP",
+      marks: 35,
+    },
+  ]);
 
-    return (
-        <div>
+  function addStudent(student) {
+    setStudents((prevStudents) => [
+      ...prevStudents,
+      {
+        ...student,
+        id: Date.now(),
+      },
+    ]);
+  }
 
-            <Navbar />
-
-            <div className="container my-4">
-
-                <h2 className="mb-4">
-                    Student Dashboard
-                </h2>
-
-                {/* Dashboard Statistics */}
-
-                <div className="row g-3 mb-4">
-
-                    <div className="col-12 col-md-4">
-                        <StatCard
-                            title="Total Students"
-                            value="250"
-                            color="primary"
-                        />
-                    </div>
-
-                    <div className="col-12 col-md-4">
-                        <StatCard
-                            title="Active Courses"
-                            value="12"
-                            color="success"
-                        />
-                    </div>
-
-                    <div className="col-12 col-md-4">
-                        <StatCard
-                            title="Completed Courses"
-                            value="85"
-                            color="warning"
-                        />
-                    </div>
-
-                </div>
-
-                {/* Course Section */}
-
-                <h3 className="mb-3">
-                    Available Courses
-                </h3>
-
-                <div className="row g-3">
-
-                    <div className="col-12 col-md-6 col-lg-4">
-                        <CourseCard
-                            name="ReactJS"
-                            duration="40 Days"
-                            fees="15,000"
-                        />
-                    </div>
-
-                    <div className="col-12 col-md-6 col-lg-4">
-                        <CourseCard
-                            name="PHP Development"
-                            duration="30 Days"
-                            fees="10,000"
-                        />
-                    </div>
-
-                    <div className="col-12 col-md-6 col-lg-4">
-                        <CourseCard
-                            name="Python"
-                            duration="45 Days"
-                            fees="12,000"
-                        />
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
+  function deleteStudent(id) {
+    setStudents((prevStudents) =>
+      prevStudents.filter((student) => student.id !== id),
     );
+  }
+
+  function updateMarks(id) {
+    setStudents((prevStudents) =>
+      prevStudents.map((student) =>
+        student.id === id
+          ? {
+              ...student,
+              marks: student.marks + 5,
+            }
+          : student,
+      ),
+    );
+  }
+
+  return (
+    <div className="container my-5">
+      <h1>Student Management System</h1>
+      <StudentForm onAddStudent={addStudent} />
+
+      <StudentList
+        students={students}
+        onDelete={deleteStudent}
+        onUpdate={updateMarks}
+      />
+    </div>
+  );
 }
 
 export default App;
